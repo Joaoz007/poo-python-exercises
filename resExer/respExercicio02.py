@@ -20,3 +20,13 @@ class Aluno:
         else:
             print("Reprovado")
 
+
+# Exemplo de uso 
+if __name__ == "__main__":
+    aluno = Aluno("João Silva", "2023001", "Engenharia de Software")
+    aluno.adicionar_nota(8.5)
+    aluno.adicionar_nota(7.0)
+    aluno.adicionar_nota(9.2)
+
+    print(f"Média: {aluno.calcular_media():.2f}")
+    aluno.status()

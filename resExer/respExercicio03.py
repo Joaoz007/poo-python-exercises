@@ -1,17 +1,24 @@
 class Professor:
-    def __init__(self, salario, nome, departamento):
+    def __init__(self, nome, departamento, salario):
         self.nome = nome
-        self._salario = salario
         self.departamento = departamento
-
-    def get_salario(self):
+        self._salario = salario
+    @property
+    def salario(self):
         return self._salario
-    
-    def set_salario(self, valor):
-        if valor >= 0:
+    @salario.setter
+    def salario(self, valor):
+        if valor > 0:
             self._salario = valor
         else:
-            print("Salário não pode ser negativo")
+            print("Erro: Salário deve ser um valor positivo!")
+# Exemplo de uso
+if __name__ == "__main__":
+    prof = Professor("Dr. Silva", "Computação", 5000.0)
+    print(f"Salário atual: R$ {prof.salario}")
 
-print ("--Professor--")
-professor1 = Professor(5000, "Carlos Pereira", "Matemática")
+    prof.salario = 6000.0  
+    print(f"Novo salário: R$ {prof.salario}")
+
+    prof.salario = -1000.0  
+    print(f"Salário após tentativa inválida: R$ {prof.salario}")
